@@ -17,20 +17,19 @@ Like the other sessions we will work with **Docker**.
 Please follow this [link](https://www.docker.com) and install Docker tool chain on your machine. E.g. [MAC OSx](
 https://www.docker.com/toolbox).
 
-
 #### Verify your docker installation
 
 On Mac OSx, open `Docker Quickstart Terminal`, on GNU/Linux open a normal terminal window.
 
 Now test your docker setup:
 
-    $ docker run hello-world
+    docker run hello-world
 
 #### Pull INSPIRE Labs image
 
 We will use the INSPIRE Labs image we prepared for you:
 
-    $ docker pull inspirehep/inspire:demo
+    docker pull inspirehep/inspire:demo
 
 
 #### Pull INSPIRE overlay sources
@@ -39,12 +38,12 @@ While the docker image is downloading, we can grab the INSPIRE overlay sources w
 
 First open a new terminal window and create a new folder for the our sources.
 
-    $ mkdir ~/invenioworkshop2015
-    $ cd invenioworkshop2015
+    mkdir -p ~/src
+    cd ~/src
 
 Now we `git clone` the sources:
 
-   $ git clone https://github.com/inspirehep/inspire-next.git
+    git clone https://github.com/inspirehep/inspire-next.git
 
 #### Run the container instance
 
@@ -58,12 +57,15 @@ Now, depending on your system, we run the container:
 
 On MAC OSx:
 
-     $ docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)" inspirehep/inspire:demo
+     docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)" inspirehep/inspire:demo
 
 
 On GNU/Linux:
 
-     $ docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 inspirehep/inspire:demo
+     docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 inspirehep/inspire:demo
+
+
+*Make sure your current working directory is the INSPIRE overlay source folder.
 
 ### Templates and blueprints
 --------------------------------
