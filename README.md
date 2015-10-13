@@ -74,7 +74,9 @@ On GNU/Linux:
 ### Adding a new submission (Deposit)
 --------------------------------
 
+The code for this demo can be found in:
 
+https://github.com/inspirehep/inspire-next/tree/iugw2015-deposit-demo
 
 
 ### Adding a harvesting workflow
