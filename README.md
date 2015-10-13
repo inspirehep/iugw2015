@@ -7,7 +7,7 @@ Inspired from https://github.com/jirikuncar/iugw2015.git
 In this session we will try to customize an Invenio 2.x installation by adding new formats, pages, submissions and more.
 
 
-### 0. What do I need on my machine?
+### Setup & Requirements
 --------------------------------
 
 Like the other sessions we will work with **Docker**.
@@ -18,7 +18,7 @@ Please follow this [link](https://www.docker.com) and install Docker tool chain 
 https://www.docker.com/toolbox).
 
 
-### 1. Verify your docker installation
+#### Verify your docker installation
 
 On Mac OSx, open `Docker Quickstart Terminal`, on GNU/Linux open a normal terminal window.
 
@@ -26,21 +26,59 @@ Now test your docker setup:
 
     $ docker run hello-world
 
-### 2. Pull INSPIRE Labs image
+#### Pull INSPIRE Labs image
 
 We will use the INSPIRE Labs image we prepared for you:
 
     $ docker pull inspirehep/inspire:demo
 
-### 3. Run the container instance
 
-Now we are going to initiate the container instance and run our INSPIRE labs site.
+#### Pull INSPIRE overlay sources
+
+While the docker image is downloading, we can grab the INSPIRE overlay sources which we will modify and play with.
+
+First open a new terminal window and create a new folder for the our sources.
+
+    $ mkdir ~/invenioworkshop2015
+    $ cd invenioworkshop2015
+
+Now we `git clone` the sources:
+
+   $ git clone https://github.com/inspirehep/inspire-next.git
+
+#### Run the container instance
+
+Assuming our docker image is downloaded we are going to initiate the container instance and run our INSPIRE labs site.
+
+First we enter the directory which the INSPIRE sources were put by our `git clone` command:
+
+     $ cd inspire-next
+
+Now, depending on your system, we run the container:
 
 On MAC OSx:
 
-     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)"  inspire-prod
+     $ docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)" inspirehep/inspire:demo
 
 
 On GNU/Linux:
 
-     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 inspire-prod
+     $ docker run -v $(pwd):/src/inspire-next -i -t -p 4000:4000 inspirehep/inspire:demo
+
+### Templates and blueprints
+--------------------------------
+
+
+
+
+### Adding a new submission (Deposit)
+--------------------------------
+
+
+
+
+### Adding a harvesting workflow
+--------------------------------
+
+
+# Thanks and happy hacking!
