@@ -17,30 +17,34 @@ Like the other sessions we will work with **Docker**.
 Please follow this [link](https://www.docker.com) and install Docker tool chain on your machine. E.g. [MAC OSx](
 https://www.docker.com/toolbox).
 
-
 ### 1. Verify your docker installation
 
 On Mac OSx, open `Docker Quickstart Terminal`, on GNU/Linux open a normal terminal window.
 
 Now test your docker setup:
 
-    $ docker run hello-world
+    docker run hello-world
 
 ### 2. Pull INSPIRE Labs image
 
 We will use the INSPIRE Labs image we prepared for you:
 
-    $ docker pull inspirehep/inspire:demo
+    docker pull inspirehep/inspire:demo
+    
+### 3. Clone the `inspire-labs` repository
 
-### 3. Run the container instance
+    mkdir -p ~/src
+    cd ~/src
+    git clone https://github.com/inspirehep/inspire-next.git
+    
+### 4. Run the container instance
 
 Now we are going to initiate the container instance and run our INSPIRE labs site.
 
 On MAC OSx:
 
-     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)"  inspire-prod
-
+     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)"  inspirehep/inspire:demo
 
 On GNU/Linux:
 
-     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 inspire-prod
+     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 inspirehep/inspire:demo
