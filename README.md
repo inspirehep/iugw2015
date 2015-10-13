@@ -1,5 +1,7 @@
 # Invenio User Group Workshop 2015
 
+Inspired from https://github.com/jirikuncar/iugw2015.git
+
 ## Invenio 2 Customization Hands-on
 
 In this session we will try to customize an Invenio 2.x installation by adding new formats, pages, submissions and more.
@@ -28,5 +30,17 @@ Now test your docker setup:
 
 We will use the INSPIRE Labs image we prepared for you:
 
-
     $ docker pull inspirehep/inspire:demo
+
+### 3. Run the container instance
+
+Now we are going to initiate the container instance and run our INSPIRE labs site.
+
+On MAC OSx:
+
+     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 -e EXTERNAL_IP="$(docker-machine ip default)"  inspire-prod
+
+
+On GNU/Linux:
+
+     docker run -v ~/src/inspire-next:/src/inspire-next -i -t -p 4000:4000 inspire-prod
