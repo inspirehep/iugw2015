@@ -70,6 +70,47 @@ On GNU/Linux:
 ### Templates and blueprints
 --------------------------------
 
+#### Flask Blueprints, Adding a static page
+
+Firstly, we will have a look at an example of how Invenio uses [Flask Blueprints](http://flask.pocoo.org/docs/0.10/blueprints/) and create a static page
+
+**Step 1**: Create a "view" on the overlay (`base/views.py`) file, so Flask/Invenio knows to direct to the new page
+
+**Step 2**: Create a template to be rendered by the view method we made previously, by extending the "page.html" and adding it on the `base/templates` directory of the overlay
+
+**Step 3**: Restart docker/server
+
+Code Samples: [About page](https://github.com/inspirehep/inspire-next/blob/master/inspire/base/templates/inspire/about.html), [views.py](https://github.com/inspirehep/inspire-next/blob/master/inspire/base/views.py),  [page.html(overlay)](https://github.com/inspirehep/inspire-next/blob/master/inspire/base/templates/page.html), [page.html(invenio)](https://github.com/inveniosoftware/invenio/blob/maint-2.1/invenio/base/templates/page_base.html)
+
+--------------
+#### Templates
+
+Here we are going to change the ["Login"](http://localhost:4000/youraccount/login) page to display an extra Github button for authentication
+
+**Step 1**: On the overlay we open( or create) the "login.html" file(`base/templates/accounts/login.html`) and 
+add a link, so users can click to navigate to the Github page for authentication
+
+**Step 2**: Now, on the "config.py" file of the overlay, we need to add the oauth configurations and credentials (secret/keys given from github)
+
+**Step 3**: Restart docker/server
+
+Code Samples: [Github oauth code](https://github.com/inveniosoftware/invenio/blob/maint-2.1/invenio/modules/oauthclient/contrib/github.py), [config.py(overlay)](https://github.com/inspirehep/inspire-next/blob/master/inspire/config.py), [login page(overlay)](https://github.com/inspirehep/inspire-next/blob/master/inspire/base/templates/accounts/login.html)
+
+-------
+#### Formatting record briefs
+
+Finally, we are going to do some changes on the record briefs and the way they are displayed on [search results](http://localhost:4000/search?p=&cc=HEP)
+
+Let say for example we want to modify the way 'Author' records briefs are displayed
+
+**Step 1**: On the overlay we open( or create) the ["hb.yml"](https://github.com/inspirehep/inspire-next/blob/master/inspire/modules/formatter/output_formats/hb.yml) file(`modules/formatter/output_formats/hb.yml`) and add the configurations we need to customize the output format and connect it with a template depending on record fields that we are interested (basically 'collections')
+
+**Step 2**: Next, it is important to have the templates specified on the "yml" file for Invenio to render. This templates should be located on overlay (`base/templates/format/record/`) and they are simple Jinja templates.
+
+Code Samples: [hb.yml (invenio)](https://github.com/inveniosoftware/invenio/blob/maint-2.1/invenio/modules/formatter/output_formats/hb.yml), [hb.yml (overlay)](https://github.com/inspirehep/inspire-next/blob/master/inspire/modules/formatter/output_formats/hb.yml), [Author brief template](https://github.com/inspirehep/inspire-next/blob/master/inspire/base/templates/format/record/Author_HTML_brief.tpl)
+
+
+
 
 
 
