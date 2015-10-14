@@ -76,7 +76,11 @@ On GNU/Linux:
 ### Adding a new submission (Deposit)
 --------------------------------
 
-The code for this demo can be found in:
+First we are going to have a look at a real world example present in https://qa.inspirehep.net/submit/literature/create
+
+This submission allows users to suggest articles to be added into INSPIRE.
+
+And now we will have a look at a minimal deposition and add it to our site. The code for this demo can be found in:
 
 https://github.com/inspirehep/inspire-next/tree/iugw2015-deposit-demo
 
